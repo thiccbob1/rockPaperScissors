@@ -4,6 +4,7 @@ let userChoice;
 let userChoiceString;
 let outcome;
 let button = document.getElementById('submit');
+let outputBox = document.getElementById('outputBox');
 
 
 //Generates a number and string for the computer's choice,
@@ -41,7 +42,8 @@ function choice() {
     } else if (userChoiceString == ("SCISSORS")){
         userChoice = 3;
     } else {
-        console.log("User typing error pls make code for this");
+        outputBox.textContent = ("Your choice was mistyped.")
+        return;
     }
     //console.log(userChoice);
     //console.log(userChoiceString);
@@ -53,35 +55,35 @@ function shoot(userChoice, computerChoice){
     if (computerChoice == 1){ //rock
         if (userChoice == 1){
             outcome = 1;
-            console.log("Tie!")
+            outputBox.textContent = ("Tie!")
         }else if (userChoice == 2){
             outcome = 2;
-            console.log("You win!")
+            outputBox.textContent = ("You win!")
         }else if (userChoice == 3){
             outcome = 3;
-            console.log("You lose!")
+            outputBox.textContent = ("You lose!")
         }
     } else if (computerChoice == 2){ //paper
         if (userChoice == 1){
             outcome = 3;
-            console.log("You lose!")
+            outputBox.textContent = ("You lose!")
         }else if (userChoice == 2){
             outcome = 1;
-            console.log("Tie!")
+            outputBox.textContent = ("Tie!")
         }else if (userChoice == 3){
             outcome = 2;
-            console.log("You win!")
+            outputBox.textContent = ("You win!")
         }
     }else if (computerChoice == 3){ //scissors
         if (userChoice == 1){
             outcome = 2;
-            console.log("You win!")
+            outputBox.textContent = ("You win!")
         }else if (userChoice == 2){
             outcome = 3;
-            console.log("You lose!")
+            outputBox.textContent = ("You lose!")
         }else if (userChoice == 3){
             outcome = 1;
-            console.log("Tie!")
+            outputBox.textContent = ("Tie!")
         }
     }
 }
