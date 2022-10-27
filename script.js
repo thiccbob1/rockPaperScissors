@@ -2,9 +2,10 @@ let computerChoice;
 let computerChoiceString;
 let userChoice;
 let userChoiceString;
-let outcome;
+let score = 0;
 let button = document.getElementById('submit');
 let outputBox = document.getElementById('outputBox');
+let scoreBox = document.getElementById('scoreBox');
 
 
 //Generates a number and string for the computer's choice,
@@ -54,38 +55,43 @@ function choice() {
 function shoot(userChoice, computerChoice){
     if (computerChoice == 1){ //rock
         if (userChoice == 1){
-            outcome = 1;
+            score += 0;
             outputBox.textContent = ("Tie!")
         }else if (userChoice == 2){
-            outcome = 2;
+            score += 1;
             outputBox.textContent = ("You win!")
         }else if (userChoice == 3){
-            outcome = 3;
+            score += -1;
             outputBox.textContent = ("You lose!")
         }
     } else if (computerChoice == 2){ //paper
         if (userChoice == 1){
-            outcome = 3;
+            score += -1;
             outputBox.textContent = ("You lose!")
         }else if (userChoice == 2){
-            outcome = 1;
+            score += 0;
             outputBox.textContent = ("Tie!")
         }else if (userChoice == 3){
-            outcome = 2;
+            score += 1;
             outputBox.textContent = ("You win!")
         }
     }else if (computerChoice == 3){ //scissors
         if (userChoice == 1){
-            outcome = 2;
+            score += 1;
             outputBox.textContent = ("You win!")
         }else if (userChoice == 2){
-            outcome = 3;
+            score += -1;
             outputBox.textContent = ("You lose!")
         }else if (userChoice == 3){
-            outcome = 1;
+            score += 0;
             outputBox.textContent = ("Tie!")
         }
     }
+    scoreBox.textContent = (score);
+}
+
+for (let i = 0; i<= 5; i++){
+
 }
 
 button.addEventListener('click', () => {
