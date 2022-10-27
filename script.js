@@ -30,5 +30,7 @@ function choice() {
     console.log(userChoice);
 };
 
-button.addEventListener('click', choice);
-button.addEventListener('click', computerChoiceGen(1, 4));
+button.addEventListener('click', () => {
+    choice();
+    computerChoiceGen(1, 4);
+});
