@@ -51,7 +51,7 @@ function choice() {
 };
 
 //tests user choice against computer's and returns a
-//message and updates the outcome
+//message and updates the score
 function shoot(userChoice, computerChoice){
     if (computerChoice == 1){ //rock
         if (userChoice == 1){
@@ -88,10 +88,6 @@ function shoot(userChoice, computerChoice){
         }
     }
     scoreBox.textContent = (score);
-}
-
-for (let i = 0; i<= 5; i++){
-
 }
 
 button.addEventListener('click', () => {
