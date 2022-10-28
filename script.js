@@ -1,11 +1,15 @@
 let computerChoice;
 let computerChoiceString;
 let userChoice;
-let userChoiceString;
 let score = 0;
-let button = document.getElementById('submit');
+let roundsPlayed = 0;
+let resetButton = document.getElementById('reset');
 let outputBox = document.getElementById('outputBox');
 let scoreBox = document.getElementById('scoreBox');
+let rockButton = document.getElementById('rock');
+let paperButton = document.getElementById('paper');
+let scissorsButton = document.getElementById('scissors');
+let roundCounter = document.getElementById('roundCounter')
 
 
 //Generates a number and string for the computer's choice,
@@ -29,25 +33,6 @@ function computerChoiceGen(min, max){
         console.log("Error");
     }
     //console.log(computerChoiceString);
-};
-
-//Read user's choice, then converts it to a number and upper
-//case string, the logs to console
-function choice() {
-    userChoiceString = document.getElementById('userChoice').value;
-    userChoiceString = userChoiceString.toUpperCase();
-    if (userChoiceString == ("ROCK")){
-        userChoice = 1;
-    }else if (userChoiceString == ("PAPER")){
-        userChoice = 2;
-    } else if (userChoiceString == ("SCISSORS")){
-        userChoice = 3;
-    } else {
-        outputBox.textContent = ("Your choice was mistyped.")
-        return;
-    }
-    //console.log(userChoice);
-    //console.log(userChoiceString);
 };
 
 //tests user choice against computer's and returns a
@@ -87,11 +72,54 @@ function shoot(userChoice, computerChoice){
             outputBox.textContent = ("Tie!")
         }
     }
-    scoreBox.textContent = (score);
 }
 
-button.addEventListener('click', () => {
-    choice();
-    computerChoiceGen(1, 4)
+//main game function, counts score and calls otherfunctions
+function game(userChoice){
+    computerChoiceGen(1, 4);
     shoot(userChoice, computerChoice);
-});
+    roundsPlayed += 1;
+    roundCounter.textContent = ("Round " + roundsPlayed);
+    if (roundsPlayed == 5){
+        outputBox.textContent = ("Game over! Your final score is: "+ score);
+    }
+}
+
+
+//reset function, becomes working after score reaches five
+function reset() {
+    if (roundsPlayed < 5){
+        return;
+    } else {
+        roundsPlayed = 0;
+        score = 0;
+        outputBox.textContent = ("New game.")
+        roundCounter.textContent = ("Round " + roundsPlayed);
+    }
+}
+
+rockButton.addEventListener('click', () => {
+    if (roundsPlayed < 5){
+        game(1);
+    } else {
+        return
+    }
+})
+
+paperButton.addEventListener('click', () => {
+    if (roundsPlayed < 5){
+        game(2);
+    } else {
+        return
+    }
+})
+
+scissorsButton.addEventListener('click', () => {
+    if (roundsPlayed < 5){
+        game(3);
+    } else {
+        return
+    }
+})
+
+resetButton.addEventListener('click', reset);
