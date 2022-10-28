@@ -74,7 +74,7 @@ function shoot(userChoice, computerChoice){
     }
 }
 
-//main game function, counts score and calls otherfunctions
+//main game function, counts score and calls other functions
 function game(userChoice){
     computerChoiceGen(1, 4);
     shoot(userChoice, computerChoice);
